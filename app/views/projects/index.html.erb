@@ -1,0 +1,79 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Proyectos</h1>
+<%= search_form_for @q do |f| %>
+  <div class="my-4">
+    <%= f.label :Filtra_por_estado_del_proyecto %>
+    <%= f.search_field :state_eq %>
+    <%= f.submit "Buscar", class:"btn btn-success" %>
+  </div>
+<% end %>
+
+
+
+<table class="table table-secondary">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Descripción</th>
+      <th scope="col">Fecha inicio</th>
+      <th scope="col">Fecha termino</th>
+      <th scope="col">Estado</th>
+      <th scope="col">Detalles</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <th scope="row"><%= project.id %></th>
+        <td><%= project.name %></td>
+        <td><%= project.description %></td>
+        <td><%= project.start_date %></td>
+        <td><%= project.end_date %></td>
+        <td><%= project.state %></td>
+        <td><%= link_to "Ver este proyecto", project %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "Nuevo Proyecto", new_project_path, style: "display: block" %>
+<%= link_to "Ver todos los proyectos", projects_path %>
+
+
+<!--<div id="projects">
+  <% @projects.each do |project| %>
+
+  <p>
+    <strong>Nombre:</strong>
+    <%= project.name %>
+  </p>
+
+  <p>
+    <strong>Descripción:</strong>
+    <%= project.description %>
+  </p>
+
+  <p>
+    <strong>Fecha Inicio:</strong>
+    <%= project.start_date %>
+  </p>
+
+  <p>
+    <strong>Fecha Termino:</strong>
+    <%= project.end_date %>
+  </p>
+
+  <p>
+    <strong>Estado:</strong>
+    <%= project.state %>
+  </p>
+
+    <p>
+      <%= link_to "Ver este proyecto", project %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "Nuevo Proyecto", new_project_path %>-->
